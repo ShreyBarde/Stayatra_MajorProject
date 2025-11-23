@@ -96,18 +96,27 @@ if (process.env.DEBUG_IN_MEMORY_SESSIONS === 'true') {
     console.warn('⚠️ DEBUG_IN_MEMORY_SESSIONS=true — using in-memory session store (not for production)');
     store = null;
 } else {
-    store = MongoStore.create({
-        mongoUrl: dbUrl,
-        crypto: {
-            secret: SESSION_SECRET
-        },
-        touchAfter: 24 * 60 * 60, // time period in seconds
-        stringify: false // Important: Prevents serialization issues
-    });
+    try {
+        const client = mongoose.connection && typeof mongoose.connection.getClient === 'function' ? mongoose.connection.getClient() : null;
+        const createOpts = client ? { client } : { mongoUrl: dbUrl };
+        store = MongoStore.create({
+            ...createOpts,
+            crypto: {
+                secret: SESSION_SECRET
+            },
+            touchAfter: 24 * 60 * 60, // time period in seconds
+            stringify: false // Important: Prevents serialization issues
+        });
 
-    store.on("error", function(e){
-        console.log("❌ Session store error:", e);
-    });
+        if (store && typeof store.on === 'function') {
+            store.on("error", function(e){
+                console.log("❌ Session store error:", e);
+            });
+        }
+    } catch (e) {
+        console.error('Failed to create Mongo session store, falling back to in-memory store for now:', e && e.stack ? e.stack : e);
+        store = null;
+    }
 }
 
 const sessionOptions = { 
