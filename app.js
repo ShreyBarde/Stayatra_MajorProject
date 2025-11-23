@@ -3,6 +3,16 @@ if(process.env.NODE_ENV !== "production"){
     require('dotenv').config();
 }
 
+// Global safety: log uncaught exceptions and unhandled rejections so we capture stack traces
+process.on('uncaughtException', (err) => {
+    console.error('UNCAUGHT EXCEPTION - exiting', err && err.stack ? err.stack : err);
+    // Allow process to exit after logging
+    process.exit(1);
+});
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('UNHANDLED REJECTION at:', promise, 'reason:', reason && reason.stack ? reason.stack : reason);
+});
+
 console.log("CLOUD_API_SECRET:", process.env.CLOUD_API_SECRET ? "✓ Loaded" : "✗ Missing");
 
 // Import required modules
