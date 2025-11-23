@@ -1,0 +1,70 @@
+<!-- //listing this folder contains EJS templates for listing-related views -->
+
+<!-- //edit.ejs - this file contains the edit form for a listing -->
+<% layout("/layouts/boilerplate") %>
+<body>
+      <div class="row">
+        <div class="col-8 offset-2">
+            <br>
+    <h1>Edit Listing</h1>
+    <br>
+     <form method="post" novalidate action="/listings/<%= listing._id %>?_method=PUT" class="needs-validation" enctype="multipart/form-data">
+
+    <div>
+        <label for="title" class="form-label">Enter Title</label>
+        <input type="text" 
+               value="<%= listing.title %>" 
+               name="listing[title]" 
+               class="form-control" 
+               id="title" required>
+               <div class="valid-feedback">Title looks good!</div>
+    </div><br><br>
+
+    <div>
+        <label for="description" class="form-label">Write description</label>
+        <textarea rows="3" cols="auto" 
+                  name="listing[description]" 
+                  class="form-control" required
+                  id="description"><%= listing.description %> </textarea>
+    </div><br><br>
+     Original listing image:
+    <div><img src="<%= originalImageUrl %>"  alt="..." ></div>
+    <div>
+        
+        <label for="image" class="form-label">Upload new Image</label>
+        <input type="file" 
+              
+               name="listing[image]" 
+               class="form-control" 
+               id="image" >
+               
+    </div><br><br>
+
+    <div class="row">
+        <div class="mb-3 col-md-4">
+            <label for="price" class="form-label">Enter price</label>
+            <input type="number" 
+                   value="<%= listing.price %>" 
+                   name="listing[price]" 
+                   class="form-control" 
+                   id="price" required>
+        </div><br><br>
+
+        <div class="mb-3 col-md-8">
+            <label for="country" class="form-label">Enter country</label>
+            <input type="text" 
+                   value="<%= listing.country %>" 
+                   name="listing[country]" 
+                   class="form-control" 
+                   id="country" required>
+        </div><br><br>
+    </div>
+
+    
+    <button type="submit" class="btn edit-btn ">Update</button><br><br>
+</form>
+        </div>
+      </div>
+
+</body>
+<script src="script.js"></script>

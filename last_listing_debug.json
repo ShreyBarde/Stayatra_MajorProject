@@ -1,0 +1,15 @@
+{
+  "image": {
+    "filename": "listingimage",
+    "url": "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHRyYXZlbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60"
+  },
+  "_id": "690f23ed02bd87a4353b44b4",
+  "title": "Cozy Beachfront Cottage",
+  "description": "Escape to this charming beachfront cottage for a relaxing getaway. Enjoy stunning ocean views and easy access to the beach.",
+  "price": 1500,
+  "location": "Malibu",
+  "country": "United States",
+  "reviews": [],
+  "owner": [],
+  "__v": 0
+}

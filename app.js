@@ -1,0 +1,193 @@
+//app.js - main application file for Stayatra project with routes, middleware, and error handling
+if(process.env.NODE_ENV !== "production"){
+    require('dotenv').config();
+}
+
+console.log("CLOUD_API_SECRET:", process.env.CLOUD_API_SECRET ? "✓ Loaded" : "✗ Missing");
+
+// Import required modules
+const express = require('express');
+const app = express();
+
+// Mongoose for MongoDB interaction
+const mongoose = require('mongoose');
+const Listing = require("./models/listing");
+const path = require('path');
+const wrapAsync = require('./utils/wrapAsync.js');
+const methodOverride = require('method-override');
+const multer  = require('multer');
+const upload = multer({ dest: 'uploads/' });
+
+//ejs-mate for ejs templating
+const ejsMate = require("ejs-mate");
+const {listingSchema, reviewSchema} = require("./Schema.js");
+const Review = require("./models/review.js");
+
+//session and flash for flash messages
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const flash = require('connect-flash');
+
+// Passport for authentication
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const User = require("./models/user.js");
+
+//routes 
+const listingRouter = require("./routes/listing.js");
+const reviewsRouter = require("./routes/review.js");
+const userRouter = require("./routes/user.js");
+const ExpressError = require("./utils/ExpressError.js");
+
+const dbUrl = process.env.ATLAS_DB_URL ;
+
+// Connect to MongoDB
+async function main() {
+     await mongoose.connect(dbUrl);
+}
+
+main()
+  .then(() => {
+    console.log("Connected to db");
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
+// ============================================
+// MIDDLEWARE SETUP (ORDER MATTERS!)
+// ============================================
+
+// 1. Body parsing middleware (ONCE ONLY!)
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// 2. Method override for PUT/DELETE in forms
+app.use(methodOverride('_method'));
+
+// 3. Static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// 4. View engine setup
+app.engine("ejs", ejsMate);
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+// 5. Session configuration
+// Ensure secret is never null/undefined
+const SESSION_SECRET = process.env.SECRET || "your-fallback-secret-key-change-in-production";
+
+if (!SESSION_SECRET || SESSION_SECRET.length < 10) {
+    console.error("⚠️  WARNING: SESSION SECRET is too short or missing!");
+}
+
+let store;
+if (process.env.DEBUG_IN_MEMORY_SESSIONS === 'true') {
+    console.warn('⚠️ DEBUG_IN_MEMORY_SESSIONS=true — using in-memory session store (not for production)');
+    store = null;
+} else {
+    store = MongoStore.create({
+        mongoUrl: dbUrl,
+        crypto: {
+            secret: SESSION_SECRET
+        },
+        touchAfter: 24 * 60 * 60, // time period in seconds
+        stringify: false // Important: Prevents serialization issues
+    });
+
+    store.on("error", function(e){
+        console.log("❌ Session store error:", e);
+    });
+}
+
+const sessionOptions = { 
+    secret: SESSION_SECRET || "secretecode",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // 7 days from now
+        maxAge: 1000 * 60 * 60 * 24 * 7, 
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production" // Only use secure in production
+    }
+};
+
+if (store) sessionOptions.store = store;
+
+app.use(session(sessionOptions));
+app.use(flash());
+
+// 6. Passport configuration
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+// 7. Flash and user middleware
+app.use((req, res, next) => {
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    res.locals.currentUser = req.user;
+    next();
+});
+
+// ============================================
+// ROUTES (MOUNT ONCE ONLY!)
+// ============================================
+
+// User routes (signup, login, logout) at root
+app.use("/", userRouter);
+
+// Listing routes
+app.use("/listings", listingRouter);
+
+// Review routes (nested under listings)
+app.use("/listings", reviewsRouter);
+
+// Demo user route
+app.get("/user/demo", async (req, res) => {
+    try {
+        let fakeUser = new User({
+            email: "demo@example.com",
+            username: "delta-student"
+        });
+        let registeredUser = await User.register(fakeUser, "demopassword");
+        res.send(registeredUser);
+    } catch(err) {
+        res.status(500).send("Error creating demo user");
+    }
+});
+
+// ============================================
+// ERROR HANDLING
+// ============================================
+
+// Catch-all for undefined routes
+app.use((req, res) => {
+    const referer = req.get("Referer");
+
+    if (referer && referer !== req.originalUrl) {
+        return res.redirect(referer);
+    }
+
+    req.flash("error", "Page not found — redirected to listings");
+    return res.redirect("/listings");
+});
+
+// Error handler (must come last)
+app.use((err, req, res, next) => {
+    const { statusCode = 500, message = "Something went wrong" } = err;
+    
+    // Prevent double-sending headers
+    if (res.headersSent) {
+        return next(err);
+    }
+    
+    res.status(statusCode).render("error.ejs", { err });
+});
+
+// Server start
+app.listen(8080, () => {
+    console.log("Server is listening on port 8080");
+});

@@ -1,0 +1,17 @@
+<!-- //includes folder contains reusable EJS partials like headers, footers, and flash messages -->
+ 
+<!-- //this file displays flash messages for success and error notifications -->
+<% function firstFlash(f){ if (Array.isArray(f)) return f[0]; return f; } %>
+<% if (typeof success !== 'undefined' && success && ((Array.isArray(success) && success.length) || (typeof success === 'string' && success.length))) { %>
+    <div class="alert alert-success alert-dismissible fade show mt-2 col-6 offset-3" role="alert">
+        <%= firstFlash(success) %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% } %>
+
+<% if (typeof error !== 'undefined' && error && ((Array.isArray(error) && error.length) || (typeof error === 'string' && error.length))) { %>
+    <div class="alert alert-danger alert-dismissible fade show mt-2 col-6 offset-3" role="alert">
+        <%= firstFlash(error) %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% } %>

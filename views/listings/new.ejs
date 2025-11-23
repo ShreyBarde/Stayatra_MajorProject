@@ -1,0 +1,61 @@
+<!-- //views/listings/new.ejs - this file contains the form to add a new listing -->
+<% layout("/layouts/boilerplate") %>
+<body>
+   
+    <div class="row">
+        <div class="col-8 offset-2">
+             <br>
+           <h1>Add New Listing</h1><br>
+  
+    <% if (currentUser) { %>
+    <form method="post" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div>
+            <label for="title" class="form-label">Enter Title</label>
+            <input type="text" placeholder="title.." name="listing[title]"  class="form-control" >
+            <div class="valid-feedback">title looks good!</div>
+            <div class="invalid-feedback">Title is required!</div>
+        </div> <br><br> 
+       
+       <br><br>
+         <div>
+            <label for="description" class="form-label">Write description</label>
+           <textarea type="text" rows="3" cols="auto" placeholder="write ....." name="listing[description]" class="form-control" ></textarea>
+        </div> <br><br> 
+
+        <div>
+            <label for="image" class="form-label">Upload Image</label>
+           <input type="file"  name="listing[image]"  class="form-control" >
+        </div><br><br>
+       
+        <div class="row">
+            <div class="mb-3 col-md-4">
+            <label for="price" class="form-label">Enter price</label>
+            <input type="text" placeholder="24000" name="listing[price]"  class="form-control" >
+            <div class="invalid-feedback">Please Enter Valid Price </div>
+        </div><br><br>
+
+       <div class="mb-3 col-md-8">
+            <label for="country" class="form-label">Enter country</label>
+            <input type="text" placeholder="India" name="listing[country]"  class="form-control" >
+            <div class="invalid-feedback">Country name should be valid</div>
+
+        </div><br><br>
+        </div>
+         
+
+       <div>
+            <label for="location" class="form-label">Enter location</label>
+            <input type="text" placeholder="Manali" name="listing[location]"  class="form-control" >
+        </div>
+       <br><br>
+
+                <button type="submit" class=" btn btn-dark add-btn">Add</button>
+        </form><br><br>
+        <% } else { %>
+            <div class="alert alert-warning">
+                You must <a href="/login">login</a> or <a href="/signup">signup</a> to create a new listing.
+            </div>
+        <% } %>
+    </div>
+</div>
+</body>
