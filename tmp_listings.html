@@ -1,0 +1,695 @@
+<!-- //views/layouts/boilerplate.ejs - this is the main layout template for the application -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stayatra</title>
+    <link rel="stylesheet" href="/css/style.css">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- //navbar.ejs - this file contains the navigation bar for the website -->
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top ">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><i class="fa-solid fa-compass"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+          <a class="nav-link " aria-current="page" href="/">Home</a>
+          <a class="nav-link" href="/listings">All Listings</a>
+          <a class="nav-link" href="/listings/new">Add new listing</a>
+      </div>
+        
+      <!-- // Right aligned nav items -->
+      <div class="navbar-nav ms-auto">
+        
+          <a class="nav-link" href="/signup">signup</a>
+          <a class="nav-link" href="/login">login</a>
+        
+      </div>
+          
+        </div>
+
+      </div>
+    </div>
+  </div>
+</nav>
+    <div class="container">
+        <!-- //includes folder contains reusable EJS partials like headers, footers, and flash messages -->
+ 
+<!-- //this file displays flash messages for success and error notifications -->
+
+
+
+        <!-- //index.ejs - this file contains the listing of all listings -->
+
+
+<body>
+    <h3>All Listings</h3>
+      
+     <div class="row row-cols-lg-5 row row-cols-md-3 row row-cols-sm-1">
+        
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44b4"><p>Cozy Beachfront Cottage</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44b4" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHRyYXZlbHxlbnwwfHwwfHx8MA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Cozy Beachfront Cottage</h5></b>
+                        <p class="card-text">Price: ₹1,500.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44b5"><p>Modern Loft in Downtown</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44b5" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHRyYXZlbHxlbnwwfHwwfHx8MA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Modern Loft in Downtown</h5></b>
+                        <p class="card-text">Price: ₹1,200.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44b6"><p>Mountain Retreat</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44b6" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aG90ZWxzfGVufDB8fDB8fHww&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Mountain Retreat</h5></b>
+                        <p class="card-text">Price: ₹1,000.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44b7"><p>Historic Villa in Tuscany</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44b7" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG90ZWxzfGVufDB8fDB8fHww&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Historic Villa in Tuscany</h5></b>
+                        <p class="card-text">Price: ₹2,500.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44b8"><p>Secluded Treehouse Getaway</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44b8" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGhvdGVsc3xlbnwwfHwwfHx8MA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Secluded Treehouse Getaway</h5></b>
+                        <p class="card-text">Price: ₹800.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44b9"><p>Beachfront Paradise</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44b9" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGhvdGVsc3xlbnwwfHwwfHx8MA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Beachfront Paradise</h5></b>
+                        <p class="card-text">Price: ₹2,000.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44ba"><p>Rustic Cabin by the Lake</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44ba" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1vdW50YWlufGVufDB8fDB8fHww&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Rustic Cabin by the Lake</h5></b>
+                        <p class="card-text">Price: ₹900.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44bb"><p>Luxury Penthouse with City Views</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44bb" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1622396481328-9b1b78cdd9fd?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2t5JTIwdmFjYXRpb258ZW58MHx8MHx8fDA%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Luxury Penthouse with City Views</h5></b>
+                        <p class="card-text">Price: ₹3,500.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44bc"><p>Ski-In/Ski-Out Chalet</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44bc" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1502784444187-359ac186c5bb?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHNreSUyMHZhY2F0aW9ufGVufDB8fDB8fHww&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Ski-In/Ski-Out Chalet</h5></b>
+                        <p class="card-text">Price: ₹3,000.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44bd"><p>Safari Lodge in the Serengeti</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44bd" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fG1vdW50YWlufGVufDB8fDB8fHww&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Safari Lodge in the Serengeti</h5></b>
+                        <p class="card-text">Price: ₹4,000.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44be"><p>Historic Canal House</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44be" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FtcGluZ3xlbnwwfHwwfHx8MA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Historic Canal House</h5></b>
+                        <p class="card-text">Price: ₹1,800.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44bf"><p>Private Island Retreat</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44bf" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1618140052121-39fc6db33972?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bG9kZ2V8ZW58MHx8MHx8fDA%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Private Island Retreat</h5></b>
+                        <p class="card-text">Price: ₹10,000.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44c0"><p>Charming Cottage in the Cotswolds</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44c0" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1602088113235-229c19758e9f?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YmVhY2glMjB2YWNhdGlvbnxlbnwwfHwwfHx8MA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Charming Cottage in the Cotswolds</h5></b>
+                        <p class="card-text">Price: ₹1,200.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44c1"><p>Historic Brownstone in Boston</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44c1" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1533619239233-6280475a633a?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHNreSUyMHZhY2F0aW9ufGVufDB8fDB8fHww&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Historic Brownstone in Boston</h5></b>
+                        <p class="card-text">Price: ₹2,200.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44c2"><p>Beachfront Bungalow in Bali</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44c2" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1602391833977-358a52198938?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fGNhbXBpbmd8ZW58MHx8MHx8fDA%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Beachfront Bungalow in Bali</h5></b>
+                        <p class="card-text">Price: ₹1,800.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44c3"><p>Mountain View Cabin in Banff</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44c3" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1521401830884-6c03c1c87ebb?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGxvZGdlfGVufDB8fDB8fHww&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Mountain View Cabin in Banff</h5></b>
+                        <p class="card-text">Price: ₹1,500.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44c4"><p>Art Deco Apartment in Miami</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44c4" class="listing-link">
+
+                   
+                   <img src="https://plus.unsplash.com/premium_photo-1670963964797-942df1804579?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGxvZGdlfGVufDB8fDB8fHww&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Art Deco Apartment in Miami</h5></b>
+                        <p class="card-text">Price: ₹1,600.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44c5"><p>Tropical Villa in Phuket</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44c5" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1470165301023-58dab8118cc9?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGxvZGdlfGVufDB8fDB8fHww&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Tropical Villa in Phuket</h5></b>
+                        <p class="card-text">Price: ₹3,000.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44c6"><p>Historic Castle in Scotland</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44c6" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1585543805890-6051f7829f98?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGJlYWNoJTIwdmFjYXRpb258ZW58MHx8MHx8fDA%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Historic Castle in Scotland</h5></b>
+                        <p class="card-text">Price: ₹4,000.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44c7"><p>Desert Oasis in Dubai</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44c7" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZHViYWl8ZW58MHx8MHx8fDA%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Desert Oasis in Dubai</h5></b>
+                        <p class="card-text">Price: ₹5,000.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44c8"><p>Rustic Log Cabin in Montana</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44c8" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1586375300773-8384e3e4916f?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGxvZGdlfGVufDB8fDB8fHww&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Rustic Log Cabin in Montana</h5></b>
+                        <p class="card-text">Price: ₹1,100.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44c9"><p>Beachfront Villa in Greece</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44c9" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dmlsbGF8ZW58MHx8MHx8fDA%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Beachfront Villa in Greece</h5></b>
+                        <p class="card-text">Price: ₹2,500.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44ca"><p>Eco-Friendly Treehouse Retreat</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44ca" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1488462237308-ecaa28b729d7?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8c2t5JTIwdmFjYXRpb258ZW58MHx8MHx8fDA%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Eco-Friendly Treehouse Retreat</h5></b>
+                        <p class="card-text">Price: ₹750.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44cb"><p>Historic Cottage in Charleston</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44cb" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1587381420270-3e1a5b9e6904?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGxvZGdlfGVufDB8fDB8fHww&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Historic Cottage in Charleston</h5></b>
+                        <p class="card-text">Price: ₹1,600.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44cc"><p>Modern Apartment in Tokyo</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44cc" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1480796927426-f609979314bd?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHRva3lvfGVufDB8fDB8fHww&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Modern Apartment in Tokyo</h5></b>
+                        <p class="card-text">Price: ₹2,000.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44cd"><p>Lakefront Cabin in New Hampshire</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44cd" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1578645510447-e20b4311e3ce?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDF8fGNhbXBpbmd8ZW58MHx8MHx8fDA%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Lakefront Cabin in New Hampshire</h5></b>
+                        <p class="card-text">Price: ₹1,200.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44ce"><p>Luxury Villa in the Maldives</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44ce" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGFrZXxlbnwwfHwwfHx8MA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Luxury Villa in the Maldives</h5></b>
+                        <p class="card-text">Price: ₹6,000.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44cf"><p>Ski Chalet in Aspen</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44cf" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGxha2V8ZW58MHx8MHx8fDA%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Ski Chalet in Aspen</h5></b>
+                        <p class="card-text">Price: ₹4,000.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+      
+           <!-- <li><a href="/listings/690f23ed02bd87a4353b44d0"><p>Secluded Beach House in Costa Rica</p></a></li>  -->
+          
+           <div class="card col listing-card" style="width: 18rem;">
+                   <a href="/listings/690f23ed02bd87a4353b44d0" class="listing-link">
+
+                   
+                   <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmVhY2glMjBob3VzZXxlbnwwfHwwfHx8MA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" class="card-img-top" alt="listing image">
+                     <div class="card-img-overlay"></div>
+                   <div class="card-body">
+                        <b><h5 class="card-title">Secluded Beach House in Costa Rica</h5></b>
+                        <p class="card-text">Price: ₹1,800.00</p>
+                        
+    
+                   </div>
+                  
+                </a> 
+                </div>
+   
+       
+    
+    </ul>
+</body>
+
+    </div>
+     
+    <!-- //footer.js - this file contains the footer section of the website -->
+    <div class="f-info">
+        <div class="f-info-socials">
+            <i class="fa-brands fa-square-facebook"></i>
+            <i class="fa-brands fa-square-instagram"></i>
+            <i class="fa-brands fa-square-linkedin"></i>
+        </div>
+        <div><sup>&copy;</sup>Stayatra Private Limited</div>
+        <div class="f-info-links">
+            <a href="#">privacy</a>
+            <a href="#">terms</a>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="/js/script.js"></script>
+</body>
+</html>
