@@ -41,11 +41,13 @@
         margin: 2rem auto;
         max-width: 600px;
     }
+    .listing-card{
+        border: 0.001px solid rgb(244, 236, 236) !important;
+        border-radius: 1rem;
+    }
 </style>
 
-<div id="filters">
-    <!-- Add your filter buttons here if needed -->
-</div>
+
 
 <body>
     <% 
@@ -56,28 +58,29 @@
     <% if (listings.length === 0) { %>
         <div class="alert alert-warning mt-4">
             <h4>No listings found!</h4>
-            <p>Try selecting a different category or check back later.</p>
+            <p>Check back later.</p>
         </div>
     <% } else { %>
-        <div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-1 mt-3">
+                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3 mt-3">
+
             <% for(let listing of listings){ %>
-                <div class="card col listing-card" style="width: 18rem;">
+                <div class="card col listing-card " style="width: 18rem;">
                     <a href="/listings/<%= listing.id || listing._id %>" class="listing-link">
 
-                    <% 
+                    <%
                         const fallbackImg = 'https://images.unsplash.com/photo-1521401830884-6c03c1c87ebb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60';
                         let imgSrc = fallbackImg;
-                        
+
                         // Safely extract image URL
                         if (listing.image) {
                             if (typeof listing.image === 'string') {
                                 imgSrc = listing.image;
-                            } else if (listing.image.url) {
+                            } else if (listing.image?.url) {  
                                 imgSrc = listing.image.url;
                             }
                         }
-                        
-                        // Convert Unsplash photo page to direct image URL
+
+                        // Convert Unsplash HTML URL to actual photo URL
                         try {
                             if (imgSrc) {
                                 const m = imgSrc.match(/unsplash\.com\/photos\/([A-Za-z0-9_-]+)/);
@@ -85,12 +88,13 @@
                             }
                         } catch(e){}
                     %>
+
                     
-                    <img src="<%= imgSrc %>" class="card-img-top" alt="<%= listing.title || 'listing image' %>" loading="lazy">
+                    <img src="<%= imgSrc %>" class="card-img-top mt-2 rounded" alt="<%= listing.title || 'listing image' %>" loading="lazy">
                     <div class="card-img-overlay"></div>
                     <div class="card-body">
                         <b><h5 class="card-title"><%= listing.title || 'Untitled' %></h5></b>
-                        <p class="card-text">
+                        <p class="card-text mb-2">
                             Price: <%= (listing.price && (typeof listing.price === 'number' || !isNaN(Number(listing.price)))) ? new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(Number(listing.price)) : 'N/A' %> per night  
                             &nbsp; &nbsp;  
                             <i class="tax-info">+18% GST</i>

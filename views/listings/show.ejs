@@ -1,7 +1,7 @@
 <!-- //views/listings/show.ejs - this file contains the detailed view of a single listing -->
 <% layout("/layouts/boilerplate") %>
 <div class="row mt-3">
-  <div class="col-8 offset-3">
+  <div class="col-8 offset-3 ">
        <h1><%= listing && listing.title ? listing.title : 'Listing' %></h1>
     </div>
 <body>
@@ -9,7 +9,7 @@
     <div class="alert alert-warning mt-4">Listing not found.</div>
   <% } else { %>
   <!-- let listing = Listings -->
-  <div class="card col-6 offset-3">
+  <div class="card col-6 offset-3 mb-3">
           
                    
                     <% 
@@ -21,7 +21,7 @@
                       } catch(e){}
                     %>
 
-                      <img src="<%= imgSrc %>" class="card-img-top" alt="...">
+                      <img src="<%= imgSrc %>" class="card-img-top mt-2 rounded mb-3" alt="...">
 
                         <div class="card-body">
                           
@@ -62,10 +62,10 @@
                           <% } %>
                         </div>
                     
-         </div><hr>
+         </div><br><br><hr>
         <% if(currentUser) { %>
 
-         <div class="col-8 offset-3 mt-3 mb-3">
+         <div class="col-8 offset-3 mt-1 mb-3">
                               <h4>Leave a review</h4>
 
                               <form 
@@ -73,7 +73,7 @@
                                 <div class="mb-3">
                                   
                                 <fieldset class="starability-slot">
-                                <legend>First rating:</legend>
+                                <legend></legend>
                                 <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
                                 <input type="radio" id="first-rate1" name="review[rating]" value="1" />
                                 <label for="first-rate1" title="Terrible">1 star</label>
@@ -98,14 +98,14 @@
                                 <button type="submit" class=" btn btn-success">submit</button>
                               </form>
                            <% }  %>             
-            </div><hr>
+            </div><br><br><hr>
             
             <p><b>All Reviews</b></p>
            
-           <div class="row ">
+           <div class="row mt-2 mb-5">
              <% if (Array.isArray(listing.reviews) && listing.reviews.length) { %>
              <% for (let review of listing.reviews) { %>
-                  <div class="card col-5 ms-3 mb-3  mt-3  ">
+                  <div class="card col-5 ms-3 mb-3  mt-3">
                       <div class="card-body">
                         <h5 class="card-title"><%= review.author && review.author.username ? review.author.username : 'Anonymous'  %></h5>
                         

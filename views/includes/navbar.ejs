@@ -19,43 +19,80 @@
    padding: 0.5rem  3rem 0.5rem 3rem;
    font-size: 1rem;
   }
+
+  /* Mobile search icon styling */
+  .mobile-search-icon {
+    color: #333;
+    font-size: 1.2rem;
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: 0.5rem;
+  }
+
+  .mobile-search-icon:hover {
+    color: red;
+  }
+
+  /* Hide mobile search icon on larger screens */
+  @media (min-width: 768px) {
+    .mobile-search-icon {
+      display: none !important;
+    }
+  }
+
+  /* Hide search in mobile collapsed menu */
+  @media (max-width: 767px) {
+    .navbar-collapse .navbar-nav.ms-auto:has(form) {
+      display: none !important;
+    }
+  }
 </style>
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top ">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><i class="fa-solid fa-compass"></i></a>
+    <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass"></i></a>
+    
+    <!-- Mobile Search Icon - visible only on mobile, before toggler -->
+    <a href="#" class="mobile-search-icon d-md-none" title="Search" data-bs-toggle="collapse" data-bs-target="#mobileSearch">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-          
           <a class="nav-link" href="/listings">Explore</a>
-         
       </div>
-        <div class="navbar-nav ms-auto">
-            <form class="d-flex" role="search">
-              <input class="form-control me-2 search-input" type="search" placeholder="Search" aria-label="Search"/>
-              <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
-            </form>
-        </div>
-      <!-- // Right aligned nav items -->
+      
       <div class="navbar-nav ms-auto">
-        <% /* Guard against missing currentUser so the template doesn't throw */ %>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2 search-input" type="search" placeholder="Search" aria-label="Search"/>
+            <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+          </form>
+      </div>
+      
+      <!-- Right aligned nav items -->
+      <div class="navbar-nav ms-auto">
         <% const user = (typeof currentUser !== 'undefined' && currentUser) ? currentUser : null; %>
         <% if (!user) { %>
           <a class="nav-link" href="/signup"><b>Signup</b></a>
           <a class="nav-link" href="/login"><b>Login</b></a>
         <% } else { %>
-          <span><a class="nav-link" href="/listings/new">Add New Listing</a></span>
-          <!-- <span class="nav-link">Hello, <%= user.username || user.email || 'User' %></span> -->
+          <a class="nav-link" href="/listings/new">Add New Listing</a>
           <a class="nav-link" href="/logout"><b>Logout</b></a>
         <% } %>
       </div>
-          
-        </div>
+    </div>
 
-      </div>
+    <!-- Mobile Search Form (collapsible) -->
+    <div class="collapse w-100 d-md-none" id="mobileSearch">
+      <form class="d-flex p-3" role="search">
+        <input class="form-control me-2 search-input" type="search" placeholder="Search listings..." aria-label="Search"/>
+        <button class="btn btn-search" type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
     </div>
   </div>
 </nav>
