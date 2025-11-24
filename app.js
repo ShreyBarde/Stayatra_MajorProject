@@ -88,7 +88,7 @@ store.on("error", function(e){
     console.log("❌ Session store error:", e);
 });
 
-const sessionConfig = {
+const sessionOptions = {
     store,
     name: "session",
     secret: process.env.SECRET,
@@ -100,7 +100,7 @@ const sessionConfig = {
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
 };
-app.use(session(sessionConfig));
+app.use(session(sessionOptions));
 app.use(flash());
 
 // 6. Passport configuration
