@@ -10,6 +10,22 @@ module.exports.index = wrapAsync(async (req,res) =>{
     res.render("listings/index", { allListings });
    
 });
+// Import the listing controller
+module.exports.searchListings = async (req, res) => {
+  const query = req.query.query?.trim() || "";
+
+  if (!query) {
+    req.flash("error", "Please enter something to search.");
+    return res.redirect("/listings");
+  }
+
+  const listings = await Listing.find({
+    title: { $regex: query, $options: "i" }
+  });
+
+  res.render("listings/index", { allListings: listings });
+};
+
 
 //function to handle new routes 
 

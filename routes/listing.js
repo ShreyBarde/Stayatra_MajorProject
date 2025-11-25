@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Listing = require("../models/listing");
+const listingController = require('../controllers/listings.js')
 const User = require("../models/user");
 const fs = require('fs');
 const path = require('path');
@@ -8,13 +9,12 @@ const wrapAsync = require('../utils/wrapAsync.js')
 const author = require('../middleware.js')
 const Review = require("../models/review");
 const { isLoggedIn, isOwner, validateReview, validateListing } = require("../middleware.js");   
-const listingController = require('../controllers/listings.js')
 
 const multer  = require('multer')
 const { storage } = require("../cloudconfig.js");
 const upload = multer({ storage });
 
-
+router.get("/search", listingController.searchListings);
 //new route
 router
     .route("/")
